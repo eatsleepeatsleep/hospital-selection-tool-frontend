@@ -1,0 +1,292 @@
+/* General Styles */
+body {
+    font-family: 'Oriya MN', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    line-height: 1.3; /* 修改行距 */
+}
+
+header, nav, main, section, footer {
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header and Navigation Styles */
+nav {
+    background-color: #ffffff;
+    padding: 3px 0;
+}
+
+nav ul {
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Hero Section Styles */
+.hero {
+    background-color: #ececec; /* Placeholder for the wavy background */
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.hero h1 {
+    color: #000;
+    font-size: 2.5rem;
+}
+
+.hero p {
+    color: #666;
+    margin: 20px 0;
+}
+
+/* Button and Input Styles */
+button, input[type="submit"], input[type="button"] {
+    background-color: #222325; /* 深灰色 */
+    color: white;
+    border: none;
+    padding: 11px 30px;
+    border-radius: 90px; /* 圓弧邊角 */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.1s ease; /* 平滑過渡效果 */
+    outline: none;
+    font-family: 'Oriya MN', sans-serif; /* Update font */
+}
+
+button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #007bff; /* 鼠標懸停時的深藍色 */
+}
+
+/* Contact Section Styles */
+.contact-container {
+    display: block; /* 取消 flex 布局 */
+    padding: 40px 80px;
+    background-color: #fff;
+    margin-top: 50px;
+}
+
+.cpss-info {
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+
+.cpss-info li select {
+    color: #ccc;
+    margin-bottom: 16px;
+    padding: 5px 23px; /* 縮小選擇框的高度和寬度 */
+    border: 1px solid #ccc; /* 調整為更深的邊框顏色 */
+    border-radius: 0px; /* 邊框圓角 */
+    font-size: 1rem;
+    font-family: 'Oriya MN', sans-serif; /* Update font */
+    text-align: center; /* 置中文字位置 */
+    appearance: none; /* 移除預設外觀 */
+    background-color: white; /* 背景白色 */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><polygon points="0,0 20,0 10,10" fill="%23333"/></svg>'); /* 添加下拉箭頭 */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+
+.cpss-info strong {
+    color: #000; /* 確保 Facial droop, Arm drift, Speech 顏色不變 */
+}
+
+.cpss-info li ul li strong.normal-text {
+    color: #012fc7; /* 修改 Normal 顏色為深藍色 */
+}
+
+.cpss-info li ul li strong.abnormal-text {
+    color: #ff0000; /* 修改 Abnormal 顏色為深紅色 */
+}
+
+.cpss-info label{
+    display: block;
+    width: 100%; /* 確保輸入欄一行一行顯示 */
+    font-size: 1.25rem; /* 調整字體大小 */
+    font-family: 'Oriya MN', sans-serif; /* Update font */
+    text-align: left; /* 文字靠左對齊 */
+    margin-top: -15px;
+}
+
+
+.contact {
+    max-width: 100%;
+}
+
+/*.contact form {
+    margin-bottom: 60px;
+}
+*/
+
+.contact form label {
+    display: block;
+    width: 100%; /* 確保輸入欄一行一行顯示 */
+    font-size: 1.25rem; /* 調整字體大小 */
+    font-family: 'Oriya MN', sans-serif; /* Update font */
+    text-align: left; /* 文字靠左對齊 */
+    margin-top: -10px;
+}
+
+/* 以下兩個選擇器的設定 */
+.contact form input[type="datetime-local"],
+.contact form input[type="text"],
+.contact form select {
+    box-sizing: border-box;
+    display: block;
+    width: 100%; /* 確保輸入欄一行一行顯示 */
+    padding: 8px; /* 縮小輸入框的大小 */
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0px; /* 圓弧邊角 */
+    font-family: 'Oriya MN', sans-serif; /* Update font */
+    text-align: center; /* 置中文字位置 */
+}
+
+.location-input-container {
+    display: flex;
+    border: 1px solid #ccc; /* 邊框顏色 */
+    align-items: center; /* 垂直居中對齊 */
+}
+
+#location {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+}
+
+#locate-btn {
+    border: none;
+    background: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center; /* 垂直居中對齊 */
+    justify-content: center; /* 水平居中對齊 */
+}
+
+#locate-btn img {
+    width: 20px; /* 圖標大小 */
+    height: auto;
+    vertical-align: middle;
+}
+
+.submit {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;  /* 水平置中 */
+    align-items: center;      /* 垂直置中，如果需要的話 */
+}
+
+/* Critical Message Styles */
+.critical-message {
+    background-color: red;
+    color: white;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 0px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Separator Line */
+.separator {
+    border-top: 2px solid black;
+    margin: 40px 0;
+}
+
+/* Hospital Cards Styles */
+#topHospitalsContainer {
+    background-color: #fff;
+    padding: 40px 80px;
+    margin-top: 30px;
+}
+
+#topHospitalsContainer h2 {
+    font-size: 2rem; /* 調整字體大小與 h2 一致 */
+    margin-top: 0;
+}
+
+#topHospitalsContainer p {
+    margin: 10px 0;
+    color: #333;
+    text-align: justify;
+}
+
+.hospital-card {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #000000;
+    border-radius: 0px;
+}
+
+.hospital-card h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.hospital-card p {
+    margin: 10px 0;
+    color: #333;
+}
+
+.hospital-card button {
+    display: block;
+    margin: 20px 0;
+    width: 100%;
+    font-family: 'Oriya MN', sans-serif; /* Update font */
+}
+
+.hospital-map {
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.hospital-card img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+footer .social-links {
+    margin: 10px 0;
+}
+
+footer .social-links a {
+    color: #ccc;
+    margin: 0 5px;
+}
