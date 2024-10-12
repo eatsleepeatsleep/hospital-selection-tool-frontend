@@ -59,7 +59,7 @@ function initMap() {
 
         document.getElementById('loading').style.display = 'block';
 
-        fetch('http://104.199.216.53:3000/calculate', {
+        fetch('https://hospital-selection-tool-backend.onrender.com/calculate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
