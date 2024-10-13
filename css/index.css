@@ -163,6 +163,12 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
     text-align: center; /* 置中文字位置 */
 }
 
+input[type="datetime-local"] {
+    width: 100%; /* 確保在手機螢幕上佔滿寬度 */
+    box-sizing: border-box; /* 確保 padding 不會影響元素的寬度 */
+}
+
+
 .location-input-container {
     display: flex;
     border: 1px solid #ccc; /* 邊框顏色 */
