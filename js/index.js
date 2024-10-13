@@ -576,6 +576,9 @@ function clearErrors() {
     document.getElementById('location-error').innerText = '';
 }
 
+
+
+
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
 function errorCallback(error) {
@@ -594,3 +597,15 @@ function errorCallback(error) {
             break;
     }
 }
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+}
+function successCallback(position) {
+    console.log('Latitude: ' + position.coords.latitude);
+    console.log('Longitude: ' + position.coords.longitude);
+}
+
+function errorCallback(error) {
+    console.error('Error occurred. Error code: ' + error.code);
+}
+
