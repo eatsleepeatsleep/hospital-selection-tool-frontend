@@ -575,3 +575,22 @@ function clearErrors() {
     document.getElementById('onset-time-error').innerText = '';
     document.getElementById('location-error').innerText = '';
 }
+
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+function errorCallback(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            alert("用戶拒絕了地理定位請求。");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("無法獲取位置。");
+            break;
+        case error.TIMEOUT:
+            alert("請求超時。");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("未知錯誤。");
+            break;
+    }
+}

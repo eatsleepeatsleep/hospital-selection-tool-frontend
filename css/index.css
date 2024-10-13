@@ -311,6 +311,10 @@ footer .social-links a {
         font-size: 1rem; /* 調整段落字體大小 */
         margin: 15px 0;
     }
+    
+    input[type="datetime-local"] {
+        width: 100%;
+    }
 
     button, input[type="submit"], input[type="button"] {
         padding: 10px 20px; /* 減小按鈕的內距 */
