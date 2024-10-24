@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Oriya MN', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #ffffff;
@@ -69,7 +69,7 @@ button, input[type="submit"], input[type="button"] {
     cursor: pointer;
     transition: background-color 0.1s ease; /* 平滑過渡效果 */
     outline: none;
-    font-family: 'Open Sans', sans-serif; /* Update font */
+    font-family: 'Oriya MN', sans-serif; /* Update font */
 }
 
 button:hover, input[type="submit"]:hover, input[type="button"]:hover {
@@ -96,7 +96,7 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
     border: 1px solid #ccc; /* 調整為更深的邊框顏色 */
     border-radius: 0px; /* 邊框圓角 */
     font-size: 1rem;
-    font-family: 'Open Sans', sans-serif; /* Update font */
+    font-family: 'Oriya MN', sans-serif; /* Update font */
     text-align: center; /* 置中文字位置 */
     appearance: none; /* 移除預設外觀 */
     background-color: white; /* 背景白色 */
@@ -112,19 +112,17 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
 
 .cpss-info li ul li strong.normal-text {
     color: #012fc7; /* 修改 Normal 顏色為深藍色 */
-    margin-left: -8px;
 }
 
 .cpss-info li ul li strong.abnormal-text {
     color: #ff0000; /* 修改 Abnormal 顏色為深紅色 */
-    margin-left: -8px;
 }
 
 .cpss-info label{
     display: block;
     width: 100%; /* 確保輸入欄一行一行顯示 */
     font-size: 1.25rem; /* 調整字體大小 */
-    font-family: 'Open Sans', sans-serif; /* Update font */
+    font-family: 'Oriya MN', sans-serif; /* Update font */
     text-align: left; /* 文字靠左對齊 */
     margin-top: -15px;
 }
@@ -143,7 +141,7 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
     display: block;
     width: 100%; /* 確保輸入欄一行一行顯示 */
     font-size: 1.25rem; /* 調整字體大小 */
-    font-family: 'Open Sans', sans-serif; /* Update font */
+    font-family: 'Oriya MN', sans-serif; /* Update font */
     text-align: left; /* 文字靠左對齊 */
     margin-top: -10px;
 }
@@ -159,15 +157,9 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 0px; /* 圓弧邊角 */
-    font-family: 'Open Sans', sans-serif; /* Update font */
+    font-family: 'Oriya MN', sans-serif; /* Update font */
     text-align: center; /* 置中文字位置 */
 }
-
-input[type="datetime-local"] {
-    width: 100%; /* 確保在手機螢幕上佔滿寬度 */
-    box-sizing: border-box; /* 確保 padding 不會影響元素的寬度 */
-}
-
 
 .location-input-container {
     display: flex;
@@ -262,7 +254,7 @@ input[type="datetime-local"] {
     display: block;
     margin: 20px 0;
     width: 100%;
-    font-family: 'Open Sans', sans-serif; /* Update font */
+    font-family: 'Oriya MN', sans-serif; /* Update font */
 }
 
 .hospital-map {
@@ -298,78 +290,3 @@ footer .social-links a {
     color: #ccc;
     margin: 0 5px;
 }
-
-/* 響應式設計，針對小螢幕調整 */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px; /* 調整字體大小 */
-    }
-
-    .hero {
-        padding: 30px 10px; /* 減小上下和左右的內距 */
-    }
-
-    .hero h1 {
-        font-size: 2rem; /* 減小標題字體 */
-    }
-
-    .hero p {
-        font-size: 1rem; /* 調整段落字體大小 */
-        margin: 15px 0;
-    }
-    
-    input[type="datetime-local"] {
-        width: 100%;
-    }
-
-    button, input[type="submit"], input[type="button"] {
-        padding: 10px 20px; /* 減小按鈕的內距 */
-        font-size: 0.875rem; /* 減小字體大小 */
-    }
-
-    .contact-container {
-        padding: 20px 40px; /* 減小區塊內距 */
-        margin-top: 30px;
-    }
-
-    .cpss-info li select {
-        padding: 5px 15px; /* 減小選擇框的內距 */
-    }
-
-    .cpss-info label {
-        font-size: 1rem; /* 調整 label 字體大小 */
-    }
-
-    .contact form input[type="datetime-local"],
-    .contact form input[type="text"],
-    .contact form select {
-        padding: 6px; /* 縮小輸入框的內距 */
-        font-size: 0.875rem; /* 減小字體大小 */
-    }
-
-    .separator {
-        margin: 20px 0; /* 減小分隔線的外距 */
-    }
-
-    #topHospitalsContainer {
-        padding: 20px 40px; /* 減小區塊的內距 */
-    }
-
-    .hospital-card {
-        padding: 15px; /* 減小卡片的內距 */
-        margin: 15px 0;
-    }
-
-    .hospital-card h3 {
-        font-size: 1.5rem; /* 減小卡片標題字體 */
-    }
-
-    .hospital-card p {
-        font-size: 0.875rem; /* 減小卡片段落字體 */
-    }
-
-    footer {
-        padding: 15px 0; /* 減小頁腳內距 */
-    }
-}
-
