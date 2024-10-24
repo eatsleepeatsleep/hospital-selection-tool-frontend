@@ -70,10 +70,22 @@ function initMap() {
                 'location': locationValue,
             }),
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+})
         .then(data => {
             document.getElementById('loading').style.display = 'none';
 
+.catch(error => {
+    document.getElementById('loading').style.display = 'none';
+    console.error('Error:', error.message);
+    console.error('Error details:', error);
+    alert('An error occurred. Please try again later.');
+});
+        
             const topHospitalsContainer = document.getElementById('topHospitals');
             topHospitalsContainer.innerHTML = '';
 
