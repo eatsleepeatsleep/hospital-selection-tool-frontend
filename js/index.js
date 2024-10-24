@@ -78,7 +78,7 @@ function initMap() {
 })
         .then(data => {
             document.getElementById('loading').style.display = 'none';
-
+})
 .catch(error => {
     document.getElementById('loading').style.display = 'none';
     console.error('Error:', error.message);
