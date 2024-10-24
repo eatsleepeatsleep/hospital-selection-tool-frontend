@@ -78,26 +78,7 @@ window.initMap() {
             })
             .then(data => {
                 document.getElementById('loading').style.display = 'none';
-            })
-            .catch(error => {
-                document.getElementById('loading').style.display = 'none';
-                console.error('Error:', error.message);
-                console.error('Error details:', error);
-                alert('An error occurred. Please try again later.');
-            });
-
-        const topHospitalsContainer = document.getElementById('topHospitals');
-        topHospitalsContainer.innerHTML = '';
-
-        const criticalMessageContainer = document.getElementById('critical-message-container');
-        criticalMessageContainer.innerHTML = '';
-
-        const criticalMessage = document.createElement('div');
-        criticalMessage.classList.add('critical-message');
-        criticalMessage.innerText = "The patient's condition is critical and requires immediate hospital treatment!";
-        criticalMessageContainer.appendChild(criticalMessage);
-
-        data.top_hospitals.forEach(hospital => {
+                data.top_hospitals.forEach(hospital => {
             const roundedProbability = (hospital.probability).toFixed(3);
             const meanMinutes = (hospital.mean / 60).toFixed(3);
 
@@ -136,6 +117,24 @@ window.initMap() {
             document.getElementById('loading').style.display = 'none';
             console.error('Error:', error);
         });
+            })
+            .catch(error => {
+                document.getElementById('loading').style.display = 'none';
+                console.error('Error:', error.message);
+                console.error('Error details:', error);
+                alert('An error occurred. Please try again later.');
+            });
+
+        const topHospitalsContainer = document.getElementById('topHospitals');
+        topHospitalsContainer.innerHTML = '';
+
+        const criticalMessageContainer = document.getElementById('critical-message-container');
+        criticalMessageContainer.innerHTML = '';
+
+        const criticalMessage = document.createElement('div');
+        criticalMessage.classList.add('critical-message');
+        criticalMessage.innerText = "The patient's condition is critical and requires immediate hospital treatment!";
+        criticalMessageContainer.appendChild(criticalMessage);
 });
 
 document.getElementById('locate-btn').addEventListener('click', function () {
