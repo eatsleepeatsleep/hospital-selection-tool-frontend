@@ -131,8 +131,7 @@ function initMap() {
                         console.error('Geocode was not successful for the following reason: ' + status);
                     }
                 });
-            });
-        })
+            })
     };    
 
     document.getElementById('locate-btn').addEventListener('click', function() {
