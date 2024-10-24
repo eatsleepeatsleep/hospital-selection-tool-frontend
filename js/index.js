@@ -144,6 +144,10 @@ function initMap() {
     });
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    initMap();
+});
+
 function locateUser() {
     console.log('Locating user...');
     if (navigator.geolocation) {
