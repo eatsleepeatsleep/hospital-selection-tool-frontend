@@ -143,10 +143,6 @@ document.getElementById('locate-btn').addEventListener('click', function () {
 });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    initMap();
-});
-
 function locateUser() {
     console.log('Locating user...');
     if (navigator.geolocation) {
