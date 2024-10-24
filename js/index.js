@@ -2,7 +2,7 @@ let map;
 let infowindow;
 let autocomplete;
 
-window.initMap() {
+window.initMap = function() {
     const taipei = new google.maps.LatLng(25.0330, 121.5654);
     map = new google.maps.Map(document.getElementById("map"), {
         center: taipei,
