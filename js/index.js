@@ -37,7 +37,7 @@ function initMap() {
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
         clearErrors();
-        
+
         const gazeScoreValue = parseInt(document.getElementById('gaze-score').value) || 0;
         const facialScoreValue = parseInt(document.getElementById('facial-score').value) || 0;
         const armScoreValue = parseInt(document.getElementById('arm-score').value) || 0;
@@ -70,40 +70,40 @@ function initMap() {
                 'location': locationValue,
             }),
         })
-        .then(response => {
-            if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-})
-        .then(data => {
-            document.getElementById('loading').style.display = 'none';
-})
-.catch(error => {
-    document.getElementById('loading').style.display = 'none';
-    console.error('Error:', error.message);
-    console.error('Error details:', error);
-    alert('An error occurred. Please try again later.');
-});
-        
-            const topHospitalsContainer = document.getElementById('topHospitals');
-            topHospitalsContainer.innerHTML = '';
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('loading').style.display = 'none';
+            })
+            .catch(error => {
+                document.getElementById('loading').style.display = 'none';
+                console.error('Error:', error.message);
+                console.error('Error details:', error);
+                alert('An error occurred. Please try again later.');
+            });
 
-            const criticalMessageContainer = document.getElementById('critical-message-container');
-            criticalMessageContainer.innerHTML = '';
+        const topHospitalsContainer = document.getElementById('topHospitals');
+        topHospitalsContainer.innerHTML = '';
 
-            const criticalMessage = document.createElement('div');
-            criticalMessage.classList.add('critical-message');
-            criticalMessage.innerText = "The patient's condition is critical and requires immediate hospital treatment!";
-            criticalMessageContainer.appendChild(criticalMessage);
+        const criticalMessageContainer = document.getElementById('critical-message-container');
+        criticalMessageContainer.innerHTML = '';
 
-            data.top_hospitals.forEach(hospital => {
-                const roundedProbability = (hospital.probability).toFixed(3);
-                const meanMinutes = (hospital.mean / 60).toFixed(3);
+        const criticalMessage = document.createElement('div');
+        criticalMessage.classList.add('critical-message');
+        criticalMessage.innerText = "The patient's condition is critical and requires immediate hospital treatment!";
+        criticalMessageContainer.appendChild(criticalMessage);
 
-                const hospitalElement = document.createElement('div');
-                hospitalElement.classList.add('hospital-card');
-                hospitalElement.innerHTML = `
+        data.top_hospitals.forEach(hospital => {
+            const roundedProbability = (hospital.probability).toFixed(3);
+            const meanMinutes = (hospital.mean / 60).toFixed(3);
+
+            const hospitalElement = document.createElement('div');
+            hospitalElement.classList.add('hospital-card');
+            hospitalElement.innerHTML = `
                     <h3>${hospital.priority}</h3>
                     <p><strong>Hospital Name:</strong> ${hospital.name}</p>
                     <p><strong>The probability of receiving definitive treatment at the chosen hospital within the threshold:</strong> ${roundedProbability}</p>
@@ -112,31 +112,36 @@ function initMap() {
                     <div id="hospital-map-${hospital.name.replace(/\s/g, '-')}" class="hospital-map"></div>
                     <img src="data:image/png;base64,${hospital.plot_base64}" alt="Truncated Normal Distribution">
                 `;
-                topHospitalsContainer.appendChild(hospitalElement);
+            topHospitalsContainer.appendChild(hospitalElement);
 
-                const geocoder = new google.maps.Geocoder();
-                geocoder.geocode({ 'address': hospital.name }, (results, status) => {
-                    if (status === 'OK' && results[0]) {
-                        const hospitalLatLng = results[0].geometry.location;
-                        const hospitalMap = new google.maps.Map(document.getElementById(`hospital-map-${hospital.name.replace(/\s/g, '-')}`), {
-                            center: hospitalLatLng,
-                            zoom: 15,
-                        });
-                        new google.maps.Marker({
-                            position: hospitalLatLng,
-                            map: hospitalMap,
-                            title: hospital.name,
-                        });
-                    } else {
-                        console.error('Geocode was not successful for the following reason: ' + status);
-                    }
-                });
-            })
-    };    
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': hospital.name }, (results, status) => {
+                if (status === 'OK' && results[0]) {
+                    const hospitalLatLng = results[0].geometry.location;
+                    const hospitalMap = new google.maps.Map(document.getElementById(`hospital-map-${hospital.name.replace(/\s/g, '-')}`), {
+                        center: hospitalLatLng,
+                        zoom: 15,
+                    });
+                    new google.maps.Marker({
+                        position: hospitalLatLng,
+                        map: hospitalMap,
+                        title: hospital.name,
+                    });
+                } else {
+                    console.error('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        })
+        .catch(error => {
+            document.getElementById('loading').style.display = 'none';
+            console.error('Error:', error);
+        });
+});
 
-    document.getElementById('locate-btn').addEventListener('click', function() {
-        locateUser();
-    };
+document.getElementById('locate-btn').addEventListener('click', function () {
+    locateUser();
+});
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     initMap();
@@ -184,7 +189,7 @@ function handleLocationError(browserHasGeolocation, pos) {
     infowindow.open(map);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const gazeScore = document.getElementById('gaze-score');
     const facialScore = document.getElementById('facial-score');
     const armScore = document.getElementById('arm-score');
@@ -197,10 +202,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('speechScore:', speechScore);
 
     function updateTotalScore() {
-        const totalScore = 
-            (parseInt(gazeScore.value) || 0)+
-            (parseInt(facialScore.value) || 0)+
-            (parseInt(armScore.value) || 0)+
+        const totalScore =
+            (parseInt(gazeScore.value) || 0) +
+            (parseInt(facialScore.value) || 0) +
+            (parseInt(armScore.value) || 0) +
             (parseInt(speechScore.value) || 0);
         totalScoreElement.textContent = totalScore;
     }
@@ -212,10 +217,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* Change color of dropdowns based on selection */
-var elements = ['gaze-score','facial-score', 'arm-score', 'speech-score'];
+var elements = ['gaze-score', 'facial-score', 'arm-score', 'speech-score'];
 
-elements.forEach(function(id) {
-    document.getElementById(id).addEventListener('change', function() {
+elements.forEach(function (id) {
+    document.getElementById(id).addEventListener('change', function () {
         this.style.color = this.value === "" ? '#ccc' : '#000';
     });
 });
