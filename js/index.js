@@ -133,10 +133,6 @@ function initMap() {
                 });
             });
         })
-        .catch(error => {
-            document.getElementById('loading').style.display = 'none';
-            console.error('Error:', error);
-        });
     });    
 
     document.getElementById('locate-btn').addEventListener('click', function() {
