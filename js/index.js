@@ -133,12 +133,11 @@ function initMap() {
                 });
             });
         })
-    });    
+    };    
 
     document.getElementById('locate-btn').addEventListener('click', function() {
         locateUser();
     });
-}
 
 document.addEventListener('DOMContentLoaded', function () {
     initMap();
