@@ -42,7 +42,7 @@ window.initMap = function () {
         const facialScoreValue = parseInt(document.getElementById('facial-score').value) || 0;
         const armScoreValue = parseInt(document.getElementById('arm-score').value) || 0;
         const speechScoreValue = parseInt(document.getElementById('speech-score').value) || 0;
-        const cpssScoreValue = facialScoreValue + armScoreValue + speechScoreValue;
+        const cpssScoreValue = gazeScoreValue + facialScoreValue + armScoreValue + speechScoreValue;
         let onsetTimeValue = document.getElementById('onset-time').value;
         const locationValue = document.getElementById('location').value;
 
