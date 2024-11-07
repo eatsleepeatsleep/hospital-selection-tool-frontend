@@ -191,8 +191,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalScoreElement = document.getElementById('total-score');
 
     function updateTotalScore() {
+        // 取得 gaze deviation 的分數，如果是 abnormal，則為 2 分
+        const gazeScoreValue = (parseInt(gazeScore.value) === 1) ? 2 : 0;
+        // 計算其他項目的總分
         const totalScore =
-            (parseInt(gazeScore.value) || 0) +
+            gazeScoreValue +
             (parseInt(facialScore.value) || 0) +
             (parseInt(armScore.value) || 0) +
             (parseInt(speechScore.value) || 0);
