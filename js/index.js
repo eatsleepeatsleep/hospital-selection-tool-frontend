@@ -2,7 +2,7 @@ let map;
 let infowindow;
 let autocomplete;
 
-window.initMap = function() {
+window.initMap = function () {
     const taipei = new google.maps.LatLng(25.0330, 121.5654);
     map = new google.maps.Map(document.getElementById("map"), {
         center: taipei,
@@ -78,69 +78,68 @@ window.initMap = function() {
             })
             .then(data => {
                 document.getElementById('loading').style.display = 'none';
+
+                const topHospitalsContainer = document.getElementById('topHospitals');
+                topHospitalsContainer.innerHTML = '';
+
+                const criticalMessageContainer = document.getElementById('critical-message-container');
+                criticalMessageContainer.innerHTML = '';
+
+                const criticalMessage = document.createElement('div');
+                criticalMessage.classList.add('critical-message');
+                criticalMessage.innerText = "The patient's condition is critical and requires immediate hospital treatment!";
+                criticalMessageContainer.appendChild(criticalMessage);
+
                 data.top_hospitals.forEach(hospital => {
-            const roundedProbability = (hospital.probability).toFixed(3);
-            const meanMinutes = (hospital.mean / 60).toFixed(3);
+                    const roundedProbability = (hospital.probability).toFixed(3);
+                    const meanMinutes = (hospital.mean / 60).toFixed(3);
 
-            const hospitalElement = document.createElement('div');
-            hospitalElement.classList.add('hospital-card');
-            hospitalElement.innerHTML = `
-                    <h3>${hospital.priority}</h3>
-                    <p><strong>Hospital Name:</strong> ${hospital.name}</p>
-                    <p><strong>The probability of receiving definitive treatment at the chosen hospital within the threshold:</strong> ${roundedProbability}</p>
-                    <p><strong>The mean time from symptom onset to receiving definitive treatment:</strong> ${meanMinutes} minutes</p>
-                    <button onclick="window.open('${hospital.google_map_url}', '_blank')">Head for this hospital</button>
-                    <div id="hospital-map-${hospital.name.replace(/\s/g, '-')}" class="hospital-map"></div>
-                    <img src="data:image/png;base64,${hospital.plot_base64}" alt="Truncated Normal Distribution">
-                `;
-            topHospitalsContainer.appendChild(hospitalElement);
+                    const hospitalElement = document.createElement('div');
+                    hospitalElement.classList.add('hospital-card');
+                    hospitalElement.innerHTML = `
+                        <h3>${hospital.priority}</h3>
+                        <p><strong>Hospital Name:</strong> ${hospital.name}</p>
+                        <p><strong>The probability of receiving definitive treatment at the chosen hospital within the threshold:</strong> ${roundedProbability}</p>
+                        <p><strong>The mean time from symptom onset to receiving definitive treatment:</strong> ${meanMinutes} minutes</p>
+                        <button onclick="window.open('${hospital.google_map_url}', '_blank')">Head for this hospital</button>
+                        <div id="hospital-map-${hospital.name.replace(/\s/g, '-')}" class="hospital-map"></div>
+                        <img src="data:image/png;base64,${hospital.plot_base64}" alt="Truncated Normal Distribution">
+                    `;
+                    topHospitalsContainer.appendChild(hospitalElement);
 
-            const geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ 'address': hospital.name }, (results, status) => {
-                if (status === 'OK' && results[0]) {
-                    const hospitalLatLng = results[0].geometry.location;
-                    const hospitalMap = new google.maps.Map(document.getElementById(`hospital-map-${hospital.name.replace(/\s/g, '-')}`), {
-                        center: hospitalLatLng,
-                        zoom: 15,
+                    const geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({ 'address': hospital.name }, (results, status) => {
+                        if (status === 'OK' && results[0]) {
+                            const hospitalLatLng = results[0].geometry.location;
+                            const hospitalMap = new google.maps.Map(document.getElementById(`hospital-map-${hospital.name.replace(/\s/g, '-')}`), {
+                                center: hospitalLatLng,
+                                zoom: 15,
+                            });
+
+                            new google.maps.Marker({
+                                position: hospitalLatLng,
+                                map: hospitalMap,
+                                title: hospital.name,
+                            });
+
+                        } else {
+                            console.error('Geocode was not successful for the following reason: ' + status);
+                        }
                     });
-                    new google.maps.Marker({
-                        position: hospitalLatLng,
-                        map: hospitalMap,
-                        title: hospital.name,
-                    });
-                } else {
-                    console.error('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-        })
-        .catch(error => {
-            document.getElementById('loading').style.display = 'none';
-            console.error('Error:', error);
-        });
+                });
             })
             .catch(error => {
                 document.getElementById('loading').style.display = 'none';
-                console.error('Error:', error.message);
+                console.error('Error:', error);
                 console.error('Error details:', error);
                 alert('An error occurred. Please try again later.');
             });
+    });
 
-        const topHospitalsContainer = document.getElementById('topHospitals');
-        topHospitalsContainer.innerHTML = '';
-
-        const criticalMessageContainer = document.getElementById('critical-message-container');
-        criticalMessageContainer.innerHTML = '';
-
-        const criticalMessage = document.createElement('div');
-        criticalMessage.classList.add('critical-message');
-        criticalMessage.innerText = "The patient's condition is critical and requires immediate hospital treatment!";
-        criticalMessageContainer.appendChild(criticalMessage);
-});
-
-document.getElementById('locate-btn').addEventListener('click', function () {
-    locateUser();
-});
-}
+    document.getElementById('locate-btn').addEventListener('click', function () {
+        locateUser();
+    });
+};
 
 function locateUser() {
     console.log('Locating user...');
@@ -191,11 +190,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const speechScore = document.getElementById('speech-score');
     const totalScoreElement = document.getElementById('total-score');
 
-    console.log('gazeScore:', gazeScore);
-    console.log('facialScore:', facialScore);
-    console.log('armScore:', armScore);
-    console.log('speechScore:', speechScore);
-
     function updateTotalScore() {
         const totalScore =
             (parseInt(gazeScore.value) || 0) +
@@ -212,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* Change color of dropdowns based on selection */
-var elements = ['gaze-score', 'facial-score', 'arm-score', 'speech-score'];
+const elements = ['gaze-score', 'facial-score', 'arm-score', 'speech-score'];
 
 elements.forEach(function (id) {
     document.getElementById(id).addEventListener('change', function () {
@@ -222,14 +216,6 @@ elements.forEach(function (id) {
 
 function validateForm(gazeScore, facialScore, armScore, speechScore, onsetTime, location) {
     let isValid = true;
-
-    // show all the args
-    console.log('gazeScore:', gazeScore);
-    console.log('facialScore:', facialScore);
-    console.log('armScore:', armScore);
-    console.log('speechScore:', speechScore);
-    console.log('onsetTime:', onsetTime);
-    console.log('location:', location);
 
     if (facialScore === 0 && armScore === 0 && speechScore === 0) {
         isValid = false;
@@ -249,7 +235,6 @@ function validateForm(gazeScore, facialScore, armScore, speechScore, onsetTime, 
         showError('location', 'Please enter location.');
         document.getElementById('location').scrollIntoView({ behavior: 'smooth' });
     }
-    console.log('isValid:', isValid);
     return isValid;
 }
 
