@@ -238,6 +238,7 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
     margin: 20px 0;
     border: 1px solid #000000;
     border-radius: 0px;
+    overflow: hidden; /* 隱藏超出 Card 的部分 */
 }
 
 .hospital-card h3 {
@@ -266,9 +267,10 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
 }
 
 .hospital-card img {
-    width: 100%;
+    width: 110%;
     height: auto;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
+    margin-left: -5%;
 }
 
 /* Footer Styles */
