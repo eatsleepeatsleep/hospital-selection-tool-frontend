@@ -70,6 +70,7 @@ window.initMap = function () {
                 'onset-time': onsetTimeValue,
                 'location': locationValue,
             }),
+            mode: 'cors' // 確保使用 CORS 模式
         })
             .then(response => {
                 if (!response.ok) {
