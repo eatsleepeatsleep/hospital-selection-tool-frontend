@@ -45,7 +45,7 @@ window.initMap = function () {
         const speechScoreValue = parseInt(document.getElementById('speech-score').value) || 0;
         const cpssScoreValue = gazeScoreValue + facialScoreValue + armScoreValue + speechScoreValue;
         let onsetTimeValue = document.getElementById('onset-time').value;
-        const locationValue = document.getElementById('location').value;
+        const locationValue = "臺北市松山區八德路三段12巷16弄6號";
 
         const isValid = validateForm(gazeScoreValue, facialScoreValue, armScoreValue, speechScoreValue, onsetTimeValue, locationValue);
         if (!isValid) return;
@@ -90,7 +90,7 @@ window.initMap = function () {
 
                 const criticalMessage = document.createElement('div');
                 criticalMessage.classList.add('critical-message');
-                criticalMessage.innerText = "The patient's condition is critical and requires immediate hospital treatment!";
+                criticalMessage.innerText = "若“臉部”、“手臂”、“語言”均為異常，腦中風可能性高達 85%";
                 criticalMessageContainer.appendChild(criticalMessage);
 
                 data.top_hospitals.forEach(hospital => {
@@ -101,10 +101,10 @@ window.initMap = function () {
                     hospitalElement.classList.add('hospital-card');
                     hospitalElement.innerHTML = `
                         <h3>${hospital.priority}</h3>
-                        <p><strong>Hospital Name:</strong> ${hospital.name}</p>
-                        <p><strong>The probability of receiving definitive treatment at the chosen hospital within the threshold:</strong> ${roundedProbability}</p>
-                        <p><strong>The mean time from symptom onset to receiving definitive treatment:</strong> ${meanMinutes} minutes</p>
-                        <button onclick="window.open('${hospital.google_map_url}', '_blank')">Head for this hospital</button>
+                        <p><strong>推薦醫院:</strong> ${hospital.name}</p>
+                        <p><strong>患者接受明確治療的機率：</strong> ${roundedProbability}</p>
+                        <p><strong>從症狀出現到接受明確治療的平均時間：</strong> ${meanMinutes} 分鐘</p>
+                        <button onclick="window.open('${hospital.google_map_url}', '_blank')">前往地圖</button>
                         <div id="hospital-map-${hospital.name.replace(/\s/g, '-')}" class="hospital-map"></div>
                         <img src="data:image/png;base64,${hospital.plot_base64}" alt="Truncated Normal Distribution">
                     `;
@@ -145,37 +145,25 @@ window.initMap = function () {
 };
 
 function locateUser() {
-    console.log('Locating user...');
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            const userLocation = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            map.setCenter(userLocation);
-            map.setZoom(15);
+    // 設置固定的出發地點為「臺北市松山區八德路三段12巷16弄6號」
+    const fixedAddress = "臺北市松山區八德路三段12巷16弄6號";
 
-            const geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ 'location': userLocation }, (results, status) => {
-                if (status === 'OK') {
-                    if (results[0]) {
-                        infowindow.setContent(results[0].formatted_address);
-                        infowindow.open(map);
-                        document.getElementById('location').value = results[0].formatted_address;
-                    } else {
-                        window.alert('No results found');
-                    }
-                } else {
-                    window.alert('Geocoder failed due to: ' + status);
-                }
-            });
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'address': fixedAddress }, (results, status) => {
+        if (status === 'OK' && results[0]) {
+            const fixedLocation = results[0].geometry.location;
+            map.setCenter(fixedLocation);  // 將地圖中心設置為固定的地點
+            map.setZoom(17);  // 設置縮放級別
 
-        }, () => {
-            handleLocationError(true, map.getCenter());
-        });
-    } else {
-        handleLocationError(false, map.getCenter());
-    }
+            infowindow.setContent(results[0].formatted_address);
+            infowindow.open(map);
+
+            // 更新輸入框中的地址
+            document.getElementById('location').value = results[0].formatted_address;
+        } else {
+            window.alert('Geocoder failed due to: ' + status);
+        }
+    });
 }
 
 function handleLocationError(browserHasGeolocation, pos) {
