@@ -290,3 +290,13 @@ footer .social-links a {
     color: #ccc;
     margin: 0 5px;
 }
+
+
+@media (max-width: 800px) {
+    .contact-container {
+        padding: 0px 30px;
+    }
+    #topHospitalsContainer {
+        padding: 0px 30px;
+    }
+}
