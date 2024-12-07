@@ -147,7 +147,7 @@ function locateUser() {
     console.log('Locating user...');
     
     // 取得用戶輸入的地址
-    const userAddress = document.getElementById('addressInput').value;
+    const userAddress = document.getElementById('location').value;
 
     // 確保用戶輸入的地址不為空
     if (userAddress === "") {
