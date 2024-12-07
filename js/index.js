@@ -45,7 +45,7 @@ window.initMap = function () {
         const speechScoreValue = parseInt(document.getElementById('speech-score').value) || 0;
         const cpssScoreValue = gazeScoreValue + facialScoreValue + armScoreValue + speechScoreValue;
         let onsetTimeValue = document.getElementById('onset-time').value;
-        const locationValue = "臺北市松山區八德路三段12巷16弄6號";
+        const locationValue = document.getElementById('location').value;
 
         const isValid = validateForm(gazeScoreValue, facialScoreValue, armScoreValue, speechScoreValue, onsetTimeValue, locationValue);
         if (!isValid) return;
@@ -144,22 +144,35 @@ window.initMap = function () {
 };
 
 function locateUser() {
-    // 設置固定的出發地點為「臺北市松山區八德路三段12巷16弄6號」
-    const fixedAddress = "臺北市松山區八德路三段12巷16弄6號";
+    console.log('Locating user...');
+    
+    // 取得用戶輸入的地址
+    const userAddress = document.getElementById('addressInput').value;
+
+    // 確保用戶輸入的地址不為空
+    if (userAddress === "") {
+        alert("請輸入地址");
+        return;
+    }
 
     const geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'address': fixedAddress }, (results, status) => {
-        if (status === 'OK' && results[0]) {
-            const fixedLocation = results[0].geometry.location;
-            map.setCenter(fixedLocation);  // 將地圖中心設置為固定的地點
-            map.setZoom(17);  // 設置縮放級別
+    geocoder.geocode({ 'address': userAddress }, (results, status) => {
+        if (status === 'OK') {
+            // 取得地址的經緯度
+            const userLocation = results[0].geometry.location;
 
+            // 設置地圖中心為輸入地址
+            map.setCenter(userLocation);
+            map.setZoom(15);
+
+            // 顯示地址的詳細資訊在 info window
             infowindow.setContent(results[0].formatted_address);
             infowindow.open(map);
 
-            // 更新輸入框中的地址
+            // 更新輸入框中的地址（可以選擇性保留）
             document.getElementById('location').value = results[0].formatted_address;
         } else {
+            // 如果地理編碼失敗，顯示錯誤訊息
             window.alert('Geocoder failed due to: ' + status);
         }
     });
