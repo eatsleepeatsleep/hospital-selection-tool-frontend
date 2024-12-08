@@ -229,7 +229,6 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
 #topHospitalsContainer p {
     margin: 10px 0;
     color: #333;
-    text-align: justify;
 }
 
 .hospital-card {
