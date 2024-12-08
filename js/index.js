@@ -225,6 +225,9 @@ document.addEventListener('DOMContentLoaded', function () {
     facialScore.addEventListener('change', updateTotalScore);
     armScore.addEventListener('change', updateTotalScore);
     speechScore.addEventListener('change', updateTotalScore);
+
+    updateTotalScore();
+    
 });
 
 /* Change color of dropdowns based on selection */
