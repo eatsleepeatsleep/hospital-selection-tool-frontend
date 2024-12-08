@@ -96,7 +96,7 @@ window.initMap = function () {
                 data.top_hospitals.forEach(hospital => {
                     const roundedProbability = (hospital.probability).toFixed(3);
                     const meanMinutes = (hospital.mean / 60).toFixed(3);
-                    const lowerboundMinutes = (hospital.lower_bound / 60).toFixed(3);
+                    const lowerboundMinutes = !isNaN(hospital.lower_bound) ? (hospital.lower_bound / 60).toFixed(3) : 'N/A';
 
                     const hospitalElement = document.createElement('div');
                     hospitalElement.classList.add('hospital-card');
