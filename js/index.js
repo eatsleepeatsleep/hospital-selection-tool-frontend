@@ -202,8 +202,24 @@ document.addEventListener('DOMContentLoaded', function () {
             (parseInt(facialScore.value) || 0) +
             (parseInt(armScore.value) || 0) +
             (parseInt(speechScore.value) || 0);
-        totalScoreElement.textContent = totalScore;
+        
+        // 判斷條件
+    if (gazeScoreValue === 2) {
+        // 如果 gazeScore = 1，總分大於等於 4 顯示「陽性」
+        if (totalScore >= 4) {
+            totalScoreElement.textContent = '陽性';
+        } else {
+            totalScoreElement.textContent = '陰性';
+        }
+    } else {
+        // 如果 gazeScore = 0，總分大於等於 3 顯示「陽性」
+        if (totalScore >= 3) {
+            totalScoreElement.textContent = '陽性';
+        } else {
+            totalScoreElement.textContent = '陰性';
+        }
     }
+}
 
     gazeScore.addEventListener('change', updateTotalScore);
     facialScore.addEventListener('change', updateTotalScore);
