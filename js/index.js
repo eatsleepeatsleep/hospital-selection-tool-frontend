@@ -90,13 +90,13 @@ window.initMap = function () {
 
                 const criticalMessage = document.createElement('div');
                 criticalMessage.classList.add('critical-message');
-                criticalMessage.innerText = "若“臉部”、“手臂”、“語言”均為異常，腦中風可能性高達 85%";
+                criticalMessage.innerText = "患者情況緊急，需要立即送醫";
                 criticalMessageContainer.appendChild(criticalMessage);
 
                 data.top_hospitals.forEach(hospital => {
                     const roundedProbability = (hospital.probability).toFixed(3);
                     const meanMinutes = (hospital.mean / 60).toFixed(3);
-                    const lowerboundMinutes = !isNaN(hospital.lower_bound) ? (hospital.lower_bound / 60).toFixed(3) : 'N/A';
+                    const lowerboundMinutes = (hospital.lower_bound / 60).toFixed(3);
 
                     const hospitalElement = document.createElement('div');
                     hospitalElement.classList.add('hospital-card');
