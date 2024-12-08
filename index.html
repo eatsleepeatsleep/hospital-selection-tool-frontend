@@ -32,82 +32,81 @@
     
     <main>
         <section class="hero">
-            <h1>於台北市對疑似腦中風患者進行醫院選擇</h1>
-            <p>考慮最小化超過治療時間窗風險的規避策略</p>
-            <button>了解更多</button>
+            <h1>Hospital Selection Tool for Suspected Stroke Patients in Taipei City</h1>
+            <p>A Risk-Averse Strategy Considering the Minimal Risk of Exceeding the Therapeutic Time Window</p>
+            <button>Learn More</button>
         </section>
 
         <section class="contact-container">
             <div class="cpss-info">
-                <h2>患者的 G-FAST 評分是多少？如何評估？</h2>
-                <p>Gaze-Face-Arm-Speech-Time(G-FAST) 量表是一種用於院前診斷疑似腦中風的系統。它測試四個關鍵的異常症狀：眼球運動受限或偏向、臉部不對稱、手臂垂落不對稱和言語異常。</p>
+                <h2>What is the patient's mG-FAST score? How is it used?</h2>
+                <p>The modified Gaze-Face-Arm-Speech-Time (mG-FAST) scale builds on the validated and widely used Cincinnati Stroke Scale (FAST) and G-FAST to enhance their ability to differentiate large vessel occlusion (LVO) from non-LVO strokes. Similar to G-FAST, it uses the same variables: gaze deviation, facial asymmetry, motor weakness, and aphasia. However, in the mG-FAST scale, gaze deviation is given double the weight of the other variables. This means that when calculating mG-FAST scores, which measure the severity of stroke symptoms, if gaze deviation is abnormal, it counts as two points. The other abnormal items each count as one point.</p>
                 <ol>
                     <li>
-                        <strong>眼球運動：</strong> 請患者頭固定不動，雙眼目視水平移動的筆。
+                        <strong>Gaze deviation:</strong> Ask the person to follow your finger with their eyes as you move it side to side.
                         <ul>
-                            <li><strong class="normal-text">正常：</strong> 雙眼水平移動均無受限。</li>
-                            <li><strong class="abnormal-text">異常：</strong> 雙眼水平移動受限或偏向。</li>
+                            <li><strong class="normal-text">Normal:</strong> Both eyes move together symmetrically.</li>
+                            <li><strong class="abnormal-text">Abnormal:</strong> One or both eyes do not move together symmetrically or deviate to one side.</li>
                         </ul>
                         <select id="gaze-score" name="gaze-score" required>
-                            <option value="">請選擇⋯⋯</option>
-                            <option value="0">正常</option>
-                            <option value="1">異常</option>
+                            <option value="">Please Select ⋯</option>
+                            <option value="0">Normal</option>
+                            <option value="1">Abnormal</option>
                         </select>
                         <div class="error-message" id="gaze-score-error"></div>
                     </li>
                     <li>
-                        <strong>臉部微笑：</strong> 請患者露牙或微笑。
+                        <strong>Facial droop:</strong> Have the person smile or show their teeth.
                         <ul>
-                            <li><strong class="normal-text">正常：</strong> 兩頰移動對稱。</li>
-                            <li><strong class="abnormal-text">異常：</strong> 一側臉部動的不如對稱邊。</li>
+                            <li><strong class="normal-text">Normal:</strong> Both sides of the face move equally.</li>
+                            <li><strong class="abnormal-text">Abnormal:</strong> One side of the face does not move as well as the other or droops.</li>
                         </ul>
                         <select id="facial-score" name="facial-score" required>
-                            <option value="">請選擇⋯⋯</option>
-                            <option value="0">正常</option>
-                            <option value="1">異常</option>
+                            <option value="">Please Select ⋯</option>
+                            <option value="0">Normal</option>
+                            <option value="1">Abnormal</option>
                         </select>
                         <div class="error-message" id="facial-score-error"></div>
                     </li>
                     <li>
-                        <strong>手臂支撐：</strong> 請患者閉眼伸出雙臂十秒鐘。
+                        <strong>Arm drift:</strong> Have the person close their eyes and hold their arms straight out in front with palms facing up for about 10 seconds.
                         <ul>
-                            <li><strong class="normal-text">正常：</strong> 雙臂均勻移動或完全不動。</li>
-                            <li><strong class="abnormal-text">異常：</strong> 一邊垂落不對稱。</li>
+                            <li><strong class="normal-text">Normal:</strong> Both arms move equally or not at all.</li>
+                            <li><strong class="abnormal-text">Abnormal:</strong> One arm does not move or drifts down compared to the other.</li>
                         </ul>
                         <select id="arm-score" name="arm-score" required>
-                            <option value="">請選擇⋯⋯</option>
-                            <option value="0">正常</option>
-                            <option value="1">異常</option>
+                            <option value="">Please Select ⋯</option>
+                            <option value="0">Normal</option>
+                            <option value="1">Abnormal</option>
                         </select>
                         <div class="error-message" id="arm-score-error"></div>
                     </li>
                     <li>
-                        <strong>言語咬字：</strong> 請患者說 "晴時多雲偶陣雨" 或另一個簡單熟悉的句子。
+                        <strong>Speech:</strong> Have the person say, "You can't teach an old dog new tricks," or another simple, familiar saying.
                         <ul>
-                            <li><strong class="normal-text">正常：</strong> 咬字正確。</li>
-                            <li><strong class="abnormal-text">異常：</strong> 口齒不清或無法說話。</li>
+                            <li><strong class="normal-text">Normal:</strong> The person uses correct words with no slurring.</li>
+                            <li><strong class="abnormal-text">Abnormal:</strong> Slurred or inappropriate words, or the person is mute.</li>
                         </ul>
                         <select id="speech-score" name="speech-score" required>
-                            <option value="">請選擇⋯⋯</option>
-                            <option value="0">正常</option>
-                            <option value="1">異常</option>
+                            <option value="">Please Select ⋯</option>
+                            <option value="0">Normal</option>
+                            <option value="1">Abnormal</option>
                         </select>
                         <div class="error-message" id="speech-score-error"></div>
                     </li>
                 </ol>
-                <label for="total-score">G-FAST 評分： <span id="total-score">0</span></label>
-                <p><input type="checkbox" name="blood_sugar" value="checked"> <strong>檢測患者血糖</strong>（≤ 60mg/dl 可能為低血糖）</p>
+                <label for="total-score">mG-FAST Score: <span id="total-score">0</span></label>
             </div>
 
             <section class="contact">
                 <form id="stroke-form">
-                    <h2>患者的症狀何時開始？</h2>
-                    <label for="onset-time">病發時間：</label>
+                    <h2>When do the patient's stroke symptoms begin?</h2>
+                    <label for="onset-time">Onset Time:</label>
                     <input type="datetime-local" id="onset-time" name="onset-time" required>
                     <div class="error-message" id="onset-time-error"></div>
 
-                    <h2>患者當前的所在位置在哪裡？</h2>
-                    <label for="location">地址：</label>
+                    <h2>What is the current location?</h2>
+                    <label for="location">Location:</label>
                     <div class="location-input-container">
                         <input type="text" id="location" name="location" placeholder="Enter location" required>
                         <button type="button" id="locate-btn">
@@ -117,7 +116,7 @@
                     <div class="error-message" id="location-error"></div>
 
                     <div class="submit">                       
-                        <input type="submit" value="送出">
+                        <input type="submit" value="Submit">
                     </div>
                     <div id="map" style="height: 0px;"></div>
                     <div id="critical-message-container"></div>
@@ -130,8 +129,8 @@
 
         <!-- Top Hospitals Section -->
         <section id="topHospitalsContainer">
-            <h2>推薦醫院</h2>
-            <p>在按下 "送出" 按鈕後，建議的醫院將在幾秒鐘內顯示。主要按照接受確定治療的機率進行醫院排名，機率較高者表示對患者更為有利。如果概率相同，醫院將依據症狀開始到治療的平均時間進行排序，較短時間的優先。通常因延遲決定去醫院而導致的負概率仍然可以考慮。</p>
+            <h2>Top Hospitals</h2>
+            <p>The suggested hospital will appear within a few seconds after pressing the 'Submit' button. Hospitals are ranked primarily by the probability of receiving definitive treatment, with higher probabilities being more favorable. If the probabilities are equal, hospitals are sorted by the mean time from symptom onset to treatment, with shorter times preferred. Negative probabilities, usually caused by delays in deciding to go to the hospital, can still be considered.</p>
 
             <div id="topHospitals"></div>
         </section>
@@ -141,9 +140,9 @@
         <div class="social-links"></div>
     </footer>
     
-    <div class="loading" id="loading">加載中...</div>
+    <div class="loading" id="loading">Loading...</div>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtHUZ8pvBsTEDL35E23a9slI-kpRwS8c8&libraries=places&callback=initMap&loading=async"></script>
-    <script src="js/index.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2P-XuBTZfkCjJjdFd0Fb2U6sNrA0r8vg&libraries=places&callback=initMap" async defer></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

@@ -238,7 +238,6 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
     margin: 20px 0;
     border: 1px solid #000000;
     border-radius: 0px;
-    overflow: hidden; /* 隱藏超出 Card 的部分 */
 }
 
 .hospital-card h3 {
@@ -267,10 +266,11 @@ button:hover, input[type="submit"]:hover, input[type="button"]:hover {
 }
 
 .hospital-card img {
-    width: 110%;
+    width: 100%;
     height: auto;
-    /*margin-top: 20px;*/
-    margin-left: -5%;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
 /* Footer Styles */
@@ -289,14 +289,4 @@ footer .social-links {
 footer .social-links a {
     color: #ccc;
     margin: 0 5px;
-}
-
-
-@media (max-width: 800px) {
-    .contact-container {
-        padding: 0px 30px;
-    }
-    #topHospitalsContainer {
-        padding: 0px 30px;
-    }
 }
