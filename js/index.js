@@ -103,8 +103,8 @@ window.initMap = function () {
                     hospitalElement.innerHTML = `
                         <h3>${hospital.priority}：${hospital.name}</h3>
                         <p><strong>患者接受正確治療的機率：</strong> ${roundedProbability}</p>
-                        <p><strong>從症狀出現到接受正確治療的平均時間：</strong> ${Math.round(meanMinutes)} 分鐘</p>
-                        <p><strong>預期最早可能接受正確治療的時間：</strong> ${Math.round(lowerboundMinutes)} 分鐘</p>
+                        <p><strong>從病發到接受正確治療的平均時間：</strong> ${Math.round(meanMinutes)} 分鐘</p>
+                        <p><strong>預期最快可接受正確治療的時間：</strong> ${Math.round(lowerboundMinutes)} 分鐘</p>
                         <button onclick="window.open('${hospital.google_map_url}', '_blank')">前往地圖</button>
                         <div id="hospital-map-${hospital.name.replace(/\s/g, '-')}" class="hospital-map"></div>
                         <img src="data:image/png;base64,${hospital.plot_base64}" alt="Truncated Normal Distribution">
