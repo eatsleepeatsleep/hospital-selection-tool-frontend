@@ -94,7 +94,7 @@ window.initMap = function () {
                 criticalMessageContainer.appendChild(criticalMessage);
 
                 data.top_hospitals.forEach(hospital => {
-                    const roundedProbability = (hospital.probability).toFixed(3);
+                    const truncatedProbability = Math.floor(hospital.probability * 1000) / 1000;
                     const meanMinutes = (hospital.mean / 60).toFixed(3);
                     const lowerboundMinutes = (hospital.lower_bound / 60).toFixed(3);
 
