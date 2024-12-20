@@ -94,8 +94,7 @@ window.initMap = function () {
                 criticalMessageContainer.appendChild(criticalMessage);
 
                 data.top_hospitals.forEach(hospital => {
-                    const truncatedProbability = Math.floor(hospital.probability * 1000) / 1000;
-                    const percentage = (truncatedProbability * 100).toFixed(3) + '%';
+                    const truncatedProbability = Math.floor(hospital.probability * 100000) / 1000 + '%';
                     const meanMinutes = (hospital.mean / 60).toFixed(3);
                     const lowerboundMinutes = (hospital.lower_bound / 60).toFixed(3);
 
@@ -103,7 +102,7 @@ window.initMap = function () {
                     hospitalElement.classList.add('hospital-card');
                     hospitalElement.innerHTML = `
                         <h3>${hospital.priority}：${hospital.name}</h3>
-                        <p><strong>患者接受正確治療的機率：</strong> ${percentage}</p>
+                        <p><strong>患者接受正確治療的機率：</strong> ${truncatedProbability}</p>
                         <p><strong>從病發到接受正確治療的平均時間：</strong> ${Math.round(meanMinutes)} 分鐘</p>
                         <p><strong>預期最快可接受正確治療的時間：</strong> ${Math.round(lowerboundMinutes)} 分鐘</p>
                         <button onclick="window.open('${hospital.google_map_url}', '_blank')">前往地圖</button>
