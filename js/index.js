@@ -213,19 +213,19 @@ document.addEventListener('DOMContentLoaded', function () {
     } else if (gazeScoreValue === 2) {
         // 如果 gazeScore = 1，總分大於等於 4 顯示「陽性」
         if (totalScore >= 4) {
-            totalScoreElement.textContent = '陽性(急性缺血性腦中風＋疑似大血管阻塞)';
+            totalScoreElement.textContent = '陽性(急性腦中風＋疑似大血管阻塞)';
             totalScoreElement.style.color = '#ff0000';
         } else {
-            totalScoreElement.textContent = '陰性(急性缺血性腦中風)';
+            totalScoreElement.textContent = '陰性(急性腦中風)';
             totalScoreElement.style.color = '#012fc7';
         }
     } else {
         // 如果 gazeScore = 0，總分大於等於 3 顯示「陽性」
         if (totalScore >= 3) {
-            totalScoreElement.textContent = '陽性(急性缺血性腦中風＋疑似大血管阻塞)';
+            totalScoreElement.textContent = '陽性(急性腦中風＋疑似大血管阻塞)';
             totalScoreElement.style.color = '#ff0000';
         } else {
-            totalScoreElement.textContent = '陰性(急性缺血性腦中風)';
+            totalScoreElement.textContent = '陰性(急性腦中風)';
             totalScoreElement.style.color = '#012fc7';
         }
     }
