@@ -90,7 +90,7 @@ window.initMap = function () {
 
                 const criticalMessage = document.createElement('div');
                 criticalMessage.classList.add('critical-message');
-                criticalMessage.innerText = "患者情況緊急，需要立即送醫(若患者症狀發作時間超過 4.5 小時，則不建議接受血栓溶解劑)";
+                criticalMessage.innerText = "患者情況緊急，需要立即送醫(若患者症狀發作時間超過 4.5 小時，則不建議接受血栓溶解劑 rt-PA)";
                 criticalMessageContainer.appendChild(criticalMessage);
 
                 data.top_hospitals.forEach(hospital => {
