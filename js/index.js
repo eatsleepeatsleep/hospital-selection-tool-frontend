@@ -96,6 +96,9 @@ window.initMap = function () {
                 const criticalMessageContainer = document.getElementById('critical-message-container');
 criticalMessageContainer.innerHTML = '';
 
+// 假設 onsetTime 是以 ISO 格式存儲（例如 '2025-02-02T10:00:00'）
+const onsetTime = new Date('2025-02-02T10:00:00');  // 這裡使用實際的發作時間替換
+                
 // 當前時間
 const currentTime = new Date();
 
