@@ -56,20 +56,18 @@
                         <div class="error-message" id="gaze-score-error"></div>
                     </li>
                     <li>
-    <strong>臉部微笑：</strong> 請患者露牙或微笑。
-    <ul>
-        <li>
-            <input type="radio" id="normal" name="facial-score" value="0" required>
-            <label for="normal"><strong class="normal-text">正常：</strong> 兩頰移動對稱。</label>
-        </li>
-        <li>
-            <input type="radio" id="abnormal" name="facial-score" value="1" required>
-            <label for="abnormal"><strong class="abnormal-text">異常：</strong> 一側臉部動的不如對稱邊。</label>
-        </li>
-    </ul>
-    <div class="error-message" id="facial-score-error"></div>
-</li>
-
+                        <strong>臉部微笑：</strong> 請患者露牙或微笑。
+                        <ul>
+                            <li><strong class="normal-text">正常：</strong> 兩頰移動對稱。</li>
+                            <li><strong class="abnormal-text">異常：</strong> 一側臉部動的不如對稱邊。</li>
+                        </ul>
+                        <select id="facial-score" name="facial-score" required>
+                            <option value="">請選擇⋯⋯</option>
+                            <option value="0">正常</option>
+                            <option value="1">異常</option>
+                        </select>
+                        <div class="error-message" id="facial-score-error"></div>
+                    </li>
                     <li>
                         <strong>手臂支撐：</strong> 請患者閉眼伸出雙臂十秒鐘。
                         <ul>
