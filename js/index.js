@@ -85,13 +85,37 @@ window.initMap = function () {
                 const topHospitalsContainer = document.getElementById('topHospitals');
                 topHospitalsContainer.innerHTML = '';
 
-                const criticalMessageContainer = document.getElementById('critical-message-container');
-                criticalMessageContainer.innerHTML = '';
+                //const criticalMessageContainer = document.getElementById('critical-message-container');
+                //criticalMessageContainer.innerHTML = '';
 
-                const criticalMessage = document.createElement('div');
-                criticalMessage.classList.add('critical-message');
-                criticalMessage.innerText = "患者情況緊急，需要立即送醫(若患者症狀發作時間超過 4.5 小時，則不建議接受血栓溶解劑 rt-PA)";
-                criticalMessageContainer.appendChild(criticalMessage);
+                //const criticalMessage = document.createElement('div');
+                //criticalMessage.classList.add('critical-message');
+                //criticalMessage.innerText = "患者情況緊急，需要立即送醫(若患者症狀發作時間超過 4.5 小時，則不建議接受血栓溶解劑 rt-PA)";
+                //criticalMessageContainer.appendChild(criticalMessage);
+
+                const criticalMessageContainer = document.getElementById('critical-message-container');
+criticalMessageContainer.innerHTML = '';
+
+// 當前時間
+const currentTime = new Date();
+
+// 計算兩者的時間差，單位為小時
+const timeDifferenceInHours = (currentTime - onsetTimeValue) / (1000 * 60 * 60);  // 毫秒轉小時
+
+const criticalMessage = document.createElement('div');
+criticalMessage.classList.add('critical-message');
+
+// 根據時間差來決定顯示的訊息
+if (timeDifferenceInHours > 4.5) {
+    criticalMessage.innerText = "患者症狀發作時間超過 4.5 小時，不建議接受血栓溶解劑 rt-PA，請嘗試送往 EVT 醫院";
+} else {
+    criticalMessage.innerText = "患者症狀發作時間未超過 4.5 小時，尚可接受血栓溶解劑 rt-PA";
+}
+
+criticalMessageContainer.appendChild(criticalMessage);
+
+
+                
 
                 data.top_hospitals.forEach(hospital => {
                     const truncatedProbability = Math.floor(hospital.probability * 100000) / 1000 + '%';
