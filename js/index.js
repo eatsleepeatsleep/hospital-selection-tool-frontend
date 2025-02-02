@@ -103,7 +103,7 @@ const onsetTime = new Date('2025-02-02T10:00:00');  // 這裡使用實際的發�
 const currentTime = new Date();
 
 // 計算兩者的時間差，單位為小時
-const timeDifferenceInHours = (currentTime - onsetTimeValue) / (1000 * 60 * 60);  // 毫秒轉小時
+const timeDifferenceInHours = (currentTime - onsetTime) / (1000 * 60 * 60);  // 毫秒轉小時
 
 const criticalMessage = document.createElement('div');
 criticalMessage.classList.add('critical-message');
