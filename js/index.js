@@ -100,7 +100,7 @@ const pretransport_time = data.pretransport_time;
 
 // 根據時間差來決定顯示的訊息
 if (pretransport_time > 16200) {
-    criticalMessage.innerText = "患者症狀發作時間超過 4.5 小時，不建議接受血栓溶解劑 rt-PA，請嘗試送往 EVT 醫院";
+    criticalMessage.innerText = "患者症狀發作時間超過 4.5 小時，不建議只接受血栓溶解劑 rt-PA，請嘗試送往 EVT 醫院";
 } else {
     criticalMessage.innerText = "患者症狀發作時間未超過 4.5 小時，尚可接受血栓溶解劑 rt-PA";
 }
